@@ -1,6 +1,13 @@
 package ch.epfl.sweng.runpharaa.user;
 
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverter;
+import android.arch.persistence.room.TypeConverters;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.Exclude;
@@ -11,29 +18,38 @@ import java.util.Comparator;
 import java.util.List;
 
 import ch.epfl.sweng.runpharaa.CustLatLng;
+import ch.epfl.sweng.runpharaa.cache.room.ListStringConverter;
 import ch.epfl.sweng.runpharaa.location.GpsService;
 import ch.epfl.sweng.runpharaa.location.RealGpsService;
 import ch.epfl.sweng.runpharaa.tracks.Track;
 import ch.epfl.sweng.runpharaa.utils.Required;
 
+@Entity
 public final class User {
-    @Exclude
+
+    @Exclude @Ignore
     public static User instance;
-    @Exclude
+    @Exclude @Ignore
     private int preferredRadius = 2000;
-    @Exclude
+    @Exclude @Ignore
     private LatLng location;
 
     private String name;
     private String picture;
+    @PrimaryKey @NonNull
     private String uid;
+    @TypeConverters(ListStringConverter.class)
     private List<String> createdTracks;
+    @TypeConverters(ListStringConverter.class)
     private List<String> favoriteTracks;
+    @TypeConverters(ListStringConverter.class)
     private List<String> likedTracks;
+    @Ignore
     private List<User> followedUsers;
 
     public User(){}
 
+    @Ignore
     public User(String name, int preferredRadius, Uri picture, LatLng location, String uid) {
         Required.nonNull(name, "The name of an user cannot be null");
         Required.nonNull(location, "The location of an user cannot be null");
@@ -54,12 +70,12 @@ public final class User {
         instance = new User(name, (int) (preferredRadius * 1000), picture, location, uId);
     }
 
-    @Exclude
+    @Exclude @Ignore
     public int getPreferredRadius() {
         return preferredRadius;
     }
 
-    @Exclude
+    @Exclude @Ignore
     public void setPreferredRadius(float newRadius) {
         this.preferredRadius = (int) (newRadius * 1000);
     }

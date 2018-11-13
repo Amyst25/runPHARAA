@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 import org.junit.Test;
 
-import ch.epfl.sweng.runpharaa.cache.MemoryCache;
+import ch.epfl.sweng.runpharaa.cache.image.MemoryCache;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package ch.epfl.sweng.runpharaa.cache;
+package ch.epfl.sweng.runpharaa.cache.image;
 
 import android.app.Activity;
 import android.content.Context;

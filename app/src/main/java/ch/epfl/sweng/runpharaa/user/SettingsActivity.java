@@ -8,9 +8,8 @@ import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import ch.epfl.sweng.runpharaa.location.GpsService;
-import ch.epfl.sweng.runpharaa.location.RealGpsService;
 import ch.epfl.sweng.runpharaa.R;
-import ch.epfl.sweng.runpharaa.cache.ImageLoader;
+import ch.epfl.sweng.runpharaa.cache.image.ImageLoader;
 
 
 public class SettingsActivity extends AppCompatPreferenceActivity {

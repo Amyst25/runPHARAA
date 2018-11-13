@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import ch.epfl.sweng.runpharaa.cache.ImageLoader;
+import ch.epfl.sweng.runpharaa.cache.image.ImageLoader;
 
 import static android.os.SystemClock.sleep;
 import static org.junit.Assert.assertEquals;

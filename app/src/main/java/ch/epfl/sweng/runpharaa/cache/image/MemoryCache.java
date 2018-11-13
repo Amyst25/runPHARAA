@@ -1,4 +1,4 @@
-package ch.epfl.sweng.runpharaa.cache;
+package ch.epfl.sweng.runpharaa.cache.image;
 
 import android.graphics.Bitmap;
 import android.util.Log;
