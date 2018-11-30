@@ -108,6 +108,7 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         launchWithExtras(locations, points);
         onView(withId(R.id.create_text_total_altitude)).check(matches(withText(String.format("Total altitude difference: %.2f m", skrr[1]))));
         onView(withId(R.id.create_text_total_distance)).check(matches(withText(String.format("Total distance: %.2f m", skrr[0]))));
+        mActivityRule.finishActivity();
     }
 
     @Test
@@ -130,6 +131,7 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         sleep(WAIT_TIME * 2);
         //TODO: MAKE THIS WORK
         //onView(withId(R.id.create_track_button)).perform(click());
+        mActivityRule.finishActivity();
     }
 
     @Test
@@ -143,6 +145,7 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         onView(withText(mActivityRule.getActivity().getResources().getString(R.string.properties_not_set)))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
+        mActivityRule.finishActivity();
     }
 
     @Test
@@ -163,6 +166,7 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         onView(withText(mActivityRule.getActivity().getResources().getString(R.string.types_not_set)))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
+        mActivityRule.finishActivity();
     }
 
     @Test
@@ -187,6 +191,7 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         onView(withText(mActivityRule.getActivity().getResources().getString(R.string.need_name)))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
+        mActivityRule.finishActivity();
     }
 
     @Test
@@ -207,6 +212,7 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         onView(withText(mActivityRule.getActivity().getResources().getString(R.string.need_name)))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
+        mActivityRule.finishActivity();
     }
 
     private void selectFirstType(boolean pressOk) {
