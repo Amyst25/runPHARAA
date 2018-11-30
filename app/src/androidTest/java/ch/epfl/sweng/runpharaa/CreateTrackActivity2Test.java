@@ -6,11 +6,14 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.NoActivityResumedException;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.SeekBar;
@@ -47,6 +50,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
@@ -92,6 +96,17 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         };
     }
 
+    @After
+    public void tearDown(){
+        final int N = 10; // how many times to hit back button
+        try {
+            for (int i = 0; i < N; i++)
+                Espresso.pressBack();
+        } catch (NoActivityResumedException e) {
+            Log.i("", "Closed all activities");
+        }
+    }
+
     // ------------- TESTS ---------------
 
     @Before
@@ -109,6 +124,8 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         onView(withId(R.id.create_text_total_altitude)).check(matches(withText(String.format("Total altitude difference: %.2f m", skrr[1]))));
         onView(withId(R.id.create_text_total_distance)).check(matches(withText(String.format("Total distance: %.2f m", skrr[0]))));
         mActivityRule.finishActivity();
+        assertTrue(mActivityRule.getActivity() == null);
+
     }
 
     @Test
@@ -132,6 +149,8 @@ public class CreateTrackActivity2Test extends TestInitLocation {
         //TODO: MAKE THIS WORK
         //onView(withId(R.id.create_track_button)).perform(click());
         mActivityRule.finishActivity();
+        assertTrue(mActivityRule.getActivity() == null);
+
     }
 
     @Test
@@ -146,6 +165,8 @@ public class CreateTrackActivity2Test extends TestInitLocation {
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
         mActivityRule.finishActivity();
+        assertTrue(mActivityRule.getActivity() == null);
+
     }
 
     @Test
@@ -167,6 +188,8 @@ public class CreateTrackActivity2Test extends TestInitLocation {
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
         mActivityRule.finishActivity();
+        assertTrue(mActivityRule.getActivity() == null);
+
     }
 
     @Test
@@ -192,6 +215,8 @@ public class CreateTrackActivity2Test extends TestInitLocation {
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
         mActivityRule.finishActivity();
+        assertTrue(mActivityRule.getActivity() == null);
+
     }
 
     @Test
@@ -213,6 +238,7 @@ public class CreateTrackActivity2Test extends TestInitLocation {
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
         mActivityRule.finishActivity();
+        assertTrue(mActivityRule.getActivity() == null);
     }
 
     private void selectFirstType(boolean pressOk) {
