@@ -58,7 +58,7 @@ import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.IsNot.not;
 
 @RunWith(AndroidJUnit4.class)
-public class CreateTrackActivity2Test extends TestInitLocation {
+public class ZCreateTrackActivity2Test extends TestInitLocation {
 
     private static final int WAIT_TIME = 1000;
 
@@ -94,17 +94,6 @@ public class CreateTrackActivity2Test extends TestInitLocation {
                 return ViewMatchers.isAssignableFrom(SeekBar.class);
             }
         };
-    }
-
-    @After
-    public void tearDown(){
-        final int N = 10; // how many times to hit back button
-        try {
-            for (int i = 0; i < N; i++)
-                Espresso.pressBack();
-        } catch (NoActivityResumedException e) {
-            Log.i("", "Closed all activities");
-        }
     }
 
     // ------------- TESTS ---------------
