@@ -33,10 +33,11 @@ before_script:
   - adb shell settings put global transition animation_scale 0 &
   - adb shell settings put global animator_duration_scale 0 &
   # Set up Code Climate test reporter
+  - adb shell input keyevent 4
+  - adb shell input tap 300 250
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  - adb shell input keyevent 82 &
 
 script:
   - travis_retry ./gradlew connectedCheck jacocoTestReport --info
