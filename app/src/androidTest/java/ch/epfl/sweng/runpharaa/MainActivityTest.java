@@ -203,19 +203,6 @@ public class MainActivityTest extends TestInitLocation {
     }
 
     @Test
-    public void testSuccessfulTrackSearch(){
-        onView(withId(R.id.viewPagerId)).perform(swipeLeft());
-        onView(withId(R.id.viewPagerId)).perform(swipeLeft());
-        onView(withId(R.id.viewPagerId)).perform(swipeLeft());
-        // click on the toggleButton
-        onView(withId(R.id.toggle_button)).perform(click());
-        sleep(1000);
-        onView(withId(R.id.searchIcon)).perform(typeText("Cours forest !"), pressKey(KeyEvent.KEYCODE_ENTER));
-        sleep(2000);
-        onView(withId(R.id.trackTitleID)).check(matches(withText("Cours forest !")));
-    }
-
-    @Test
     public void testUnsuccessfulTrackSearch(){
         onView(withId(R.id.viewPagerId)).perform(swipeLeft());
         onView(withId(R.id.viewPagerId)).perform(swipeLeft());
@@ -228,6 +215,19 @@ public class MainActivityTest extends TestInitLocation {
         onView(withText(expected))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testSuccessfulTrackSearch(){
+        onView(withId(R.id.viewPagerId)).perform(swipeLeft());
+        onView(withId(R.id.viewPagerId)).perform(swipeLeft());
+        onView(withId(R.id.viewPagerId)).perform(swipeLeft());
+        // click on the toggleButton
+        onView(withId(R.id.toggle_button)).perform(click());
+        sleep(1000);
+        onView(withId(R.id.searchIcon)).perform(typeText("Cours forest !"), pressKey(KeyEvent.KEYCODE_ENTER));
+        sleep(2000);
+        onView(withId(R.id.trackTitleID)).check(matches(withText("Cours forest !")));
     }
 
     @Test
