@@ -3,6 +3,7 @@ package ch.epfl.sweng.runpharaa;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,11 +17,11 @@ import static android.os.SystemClock.sleep;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
-public class BBB extends TestInitLocation {
+public class BBBBB extends TestInitLocation {
 
     @Rule
     public final ActivityTestRule<MainActivity> mActivityRule =
-            new ActivityTestRule<>(MainActivity.class, false, false);
+            new ActivityTestRule<>(MainActivity.class);
 
     @BeforeClass
     public static void initUser() {
@@ -28,8 +29,7 @@ public class BBB extends TestInitLocation {
     }
 
     @Test
-    public void heeeeeySisteeeeeer() {
-        mActivityRule.launchActivity(null);
+    public void heeeeeyBrotheeeeer() {
         sleep(2000);
         assertTrue(true);
     }
